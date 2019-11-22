@@ -1,66 +1,106 @@
 <template>
-<div id="activityApp">
+  <div id="activityApp">
     <nav class="navbar is-white topNav">
-        <div class="container">
-            <div class="navbar-brand">
-            <h1>Activity Planner</h1>
-            </div>
+      <div class="container">
+        <div class="navbar-brand">
+          <h1>Activity Planner</h1>
         </div>
+      </div>
     </nav>
     <nav class="navbar is-white">
-        <div class="container">
-            <div class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item is-active" href="#">Newest</a>
-                    <a class="navbar-item" href="#">In Progress</a>
-                    <a class="navbar-item" href="#">Finished</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a
+              class="navbar-item is-active"
+              href="#"
+            >Newest</a>
+            <a
+              class="navbar-item"
+              href="#"
+            >In Progress</a>
+            <a
+              class="navbar-item"
+              href="#"
+            >Finished</a>
+          </div>
         </div>
+      </div>
     </nav>
 
     <section class="container">
-        <div class="columns">
-            <div class="column is-3">
-                <a  v-if="!isFormDisplayed" @click="toggleForm" class="button is-primary is-block is-alt is-large" href="#">New Activity</a>
-                <div v-if="isFormDisplayed" class="create-form">
-                    <h2>Create Activity</h2>
-                    <form>
-                        <div class="field">
-                            <label class="label">Title</label>
-                            <div class="control">
-                                <input v-model="newActivity.title" class="input" type="text" placeholder="Read a Book">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="" class="label">Notes</label>
-                            <div class="control">
-                                <textarea v-model="newActivity.notes" name="textarea" class="textarea" placeholder="text area"></textarea>
-                            </div>
-                        </div>
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button @click="createActivity" class="button is-link">Create activity</button>
-                            </div>
-                            <div class="control">
-                                <button @click="toggleForm" class="button is-text">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+      <div class="columns">
+        <div class="column is-3">
+          <a
+            v-if="!isFormDisplayed"
+            class="button is-primary is-block is-alt is-large"
+            href="#"
+            @click="toggleForm"
+          >New Activity</a>
+          <div
+            v-if="isFormDisplayed"
+            class="create-form"
+          >
+            <h2>Create Activity</h2>
+            <form>
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input
+                    v-model="newActivity.title"
+                    class="input"
+                    type="text"
+                    placeholder="Read a Book"
+                  >
                 </div>
-            </div>
-            <div class="column is-9">
-                <div class="box content">
-                    
-                    <ActivityItem  
-                        v-for="activity in activities" 
-                        :activity="activity"
-                        :key="activity.id"></ActivityItem>
+              </div>
+              <div class="field">
+                <label
+                  for=""
+                  class="label"
+                >Notes</label>
+                <div class="control">
+                  <textarea
+                    v-model="newActivity.notes"
+                    name="textarea"
+                    class="textarea"
+                    placeholder="text area"
+                  />
                 </div>
-            </div>
+              </div>
+              <div class="field is-grouped">
+                <div class="control">
+                  <button
+                    class="button is-link"
+                    @click="createActivity"
+                  >
+                    Create activity
+                  </button>
+                </div>
+                <div class="control">
+                  <button
+                    class="button is-text"
+                    @click="toggleForm"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+        <div class="column is-9">
+          <div class="box content">
+            <ActivityItem  
+              v-for="activity in activities" 
+              :key="activity.id"
+              :activity="activity"
+            />
+          </div>
+        </div>
+      </div>
     </section>
-</div>
+  </div>
 </template>
 
 <script>
@@ -68,7 +108,7 @@ import ActivityItem from './components/ActivityItem'
 import { fetchActivities } from './api/index' // @ points to src folder
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
       ActivityItem
   },
